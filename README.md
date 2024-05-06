@@ -1,9 +1,9 @@
 # PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24
 <h3>AIM:</h3>
-<h3>ENTER NAME: JOEL P</h3>
-<h3>ENTER REGISTER NO: 212222230057</h3>
-<h3>EX. NO: 06</h3>
-<h3>DATE:01-05-2024</h3>
+<h3>NAME: JOEL P</h3>
+<h3>REGISTER NO :212222230057</h3>
+<h3>EX. NO : 6</h3>
+<h3>DATE</h3>
 <h1> <align=center> MATRIX TRANSPOSITION USING SHARED MEMORY </h3>
   Implement Matrix transposition using GPU Shared memory.</h3>
 
@@ -61,8 +61,11 @@ Google Colab with NVCC Compiler
 16. End of Algorithm
 
 ## PROGRAM:
-```
-%%cuda
+TYPE YOUR CODE HERE
+~~~
+!pip install git+https://github.com/andreinechaev/nvcc4jupyter.git
+%load_ext nvcc4jupyter
+%%writefile mattran.cu
 #include <stdio.h>
 #include <cuda_runtime.h>
 #include <cuda.h>
@@ -145,6 +148,7 @@ inline double seconds()
 #define BDIMX 16
 #define BDIMY 16
 #define IPAD  2
+
 void printData(char *msg, int *in,  const int size)
 {
     printf("%s: ", msg);
@@ -394,10 +398,21 @@ CHECK(cudaMemset(d_C, 0, nBytes));
     CHECK(cudaDeviceReset());
     return EXIT_SUCCESS;
 }
-```
+!nvcc -o mattran mattran.cu
+!./mattran
+!nvprof ./mattran
+!nvprof --print-gpu-trace ./mattran
+~~~
 
 ## OUTPUT:
-![327146466-f742dd7e-302e-4e4b-a955-4c7fa9e6eae0](https://github.com/Aravindsamy04/PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24/assets/113497037/5c74c063-919c-45d9-87fb-2ed43cc1ca70)
+SHOW YOUR OUTPUT HERE
+![Screenshot 2024-04-24 001341](https://github.com/kabilanthiyagarajan/PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24/assets/120206067/700eee37-4b03-4065-a041-9695c07c5f95)
+![Screenshot 2024-04-24 001406](https://github.com/kabilanthiyagarajan/PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24/assets/120206067/454709e5-07b3-4f77-867d-0ff3eb9dd38a)
+![Screenshot 2024-04-24 001431](https://github.com/kabilanthiyagarajan/PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24/assets/120206067/566e66ab-79dd-4bf6-b966-3df80f3e4b99)
+![Screenshot 2024-04-24 001505](https://github.com/kabilanthiyagarajan/PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24/assets/120206067/015d1025-f168-4ae1-a259-242598c0cf40)
+
+
+
 
 
 ## RESULT:
